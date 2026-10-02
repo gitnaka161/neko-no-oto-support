@@ -90,8 +90,8 @@ h1 {
 }
 
 main {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  display: flex;
+  flex-direction: column;
   min-width: 0;
   gap: 18px;
   margin-top: 24px;
