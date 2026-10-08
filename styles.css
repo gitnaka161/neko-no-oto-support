@@ -130,6 +130,23 @@ main > * {
   font-weight: 700;
 }
 
+/* The one link people are most likely to want: a filled button rather than a line of text. */
+.store {
+  display: inline-block;
+  padding: 0.7em 1.4em;
+  border-radius: 999px;
+  background: #3f6e57;
+  color: #fffaf2;
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.store:hover,
+.store:focus-visible {
+  background: #345c48;
+}
+
 footer {
   padding: 28px 8px 0;
   color: var(--muted);
