@@ -3,11 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="写真のように描かれた部屋を、本物の3Dの猫がUnityで歩き回るiPhoneアプリ「猫のいる音」。Claude CodeとCodexで作り、App Storeの審査に出すまでの開発記録です。" />
-    <meta property="og:title" content="Claude Code × Codexで「猫のいる音」をつくる" />
+    <meta name="description" content="AIとUnityで作ったiPhoneアプリ「猫のいる音」の開発記録。3Dの猫、猫の音、アイコン制作、App Store公開までの試行錯誤をまとめました。" />
+    <meta property="og:title" content="AIとUnityで「猫のいる音」をつくる" />
     <meta property="og:type" content="article" />
     <meta property="og:locale" content="ja_JP" />
-    <title>Claude Code × Codexで「猫のいる音」をつくる</title>
+    <meta property="og:image" content="https://gitnaka161.github.io/neko-no-oto-support/assets/app-icon.png" />
+    <title>AIとUnityで「猫のいる音」をつくる</title>
     <link rel="stylesheet" href="styles.css?v=20261002-2" />
     <style>
       .story { background: var(--paper); border: 1px solid var(--line); border-radius: 24px; padding: clamp(20px, 5vw, 48px); }
@@ -24,14 +25,16 @@
       .story th, .story td { border-bottom: 1px solid var(--line); padding: 0.6em 0.7em; text-align: left; vertical-align: top; }
       .story th { background: var(--sage-soft); }
       .updated { color: var(--muted); font-size: 0.9rem; }
+      .hero-icon { width: 116px; height: 116px; border-radius: 25%; box-shadow: 0 16px 34px rgba(37,51,44,0.22); margin-bottom: 1.2rem; }
       pre.mermaid { background: #fffdf7; border: 1px solid var(--line); border-radius: 14px; padding: 1em; overflow-x: auto; }
     </style>
   </head>
   <body>
     <div class="shell">
       <header class="hero">
+        <img class="hero-icon" src="assets/app-icon.png" alt="猫のいる音のアプリアイコン" />
         <p class="eyebrow">Development Story</p>
-        <h1>Claude Code × Codexで「猫のいる音」をつくる</h1>
+        <h1>AIとUnityで「猫のいる音」をつくる</h1>
       </header>
       <main>
         <article class="story">
