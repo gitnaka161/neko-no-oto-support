@@ -101,8 +101,10 @@
             <div class="arch-node">公開経路<span>WindowsでXcodeを書き出し、GitHub ActionsのmacOSで署名してApp Storeへ。</span></div>
           </div>
           <figure class="arch-figure">
-            <div class="arch-scroll"><img src="architecture-diagram.svg" alt="猫のいる音のアーキテクチャ構成図。素材ソースからUnityアプリ、iPhone内保存、GitHub ActionsとApp Store Connectまでの流れ。" loading="lazy" /></div>
-            <figcaption>素材の取り込みから、iPhone内で動く部分、公開のときだけ通る経路まで。横に広いので、スマートフォンでは横にスワイプしてください。</figcaption>
+            <a class="arch-frame" href="architecture-diagram.svg" target="_blank" rel="noopener">
+              <img src="architecture-diagram.svg" alt="猫のいる音のアーキテクチャ構成図。素材ソースからUnityアプリ、iPhone内保存、GitHub ActionsとApp Store Connectまでの流れ。" loading="lazy" />
+            </a>
+            <figcaption>素材の取り込みから、iPhone内で動く部分、公開のときだけ通る経路まで。図をタップすると、もっと大きく開きます。</figcaption>
           </figure>
           <h2>このアプリの中心は、本物の3Dの猫です</h2>
           <p>先に、このアプリでいちばん手のかかった部分を書いておきます。<strong>画面の中の猫は、録画した映像でも、パラパラ漫画の絵でもありません。</strong>iPhoneの中で毎秒何十回も計算されて動いている、3Dのキャラクターです。今回の開発でいちばん時間を使ったのは、音楽アプリのように再生ボタンを置くことではなく、この猫を「部屋にいる生き物」に見せることでした。</p>

@@ -165,29 +165,36 @@ footer {
   }
 }
 
-/* The architecture diagram is 1120 wide. It fits a desktop column, and on a phone it keeps its size
-   and scrolls sideways, because shrinking it to 375px makes every label unreadable. */
+/* The diagram is the widest thing in the article, so it steps outside the text column and takes the
+   width it needs. Tapping it opens the file itself, where a browser can zoom as far as anyone wants. */
 .arch-figure {
-  margin: 1.6em 0;
+  margin: 1.8em 0;
+  width: min(1280px, 94vw);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.arch-scroll {
+.arch-frame {
+  display: block;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  border-radius: 16px;
+  border-radius: 18px;
   background: #ffffff;
   border: 1px solid var(--line);
+  box-shadow: 0 10px 30px rgba(37, 51, 44, 0.08);
 }
 
-.arch-scroll img {
+.arch-frame img {
   display: block;
   width: 100%;
-  min-width: 720px;
+  min-width: 860px;
   height: auto;
 }
 
 .arch-figure figcaption {
-  margin-top: 0.6em;
+  margin-top: 0.7em;
   color: var(--muted);
   font-size: 0.85rem;
+  text-align: center;
 }
