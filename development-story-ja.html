@@ -45,9 +45,14 @@
       .store-card img { width: 118px; height: 118px; border-radius: 16px; box-shadow: 0 10px 24px rgba(37,51,44,0.12); }
       .store-card strong { display: block; margin-bottom: 0.2em; font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; }
       .store-card p { margin: 0.25em 0 0.7em; }
-      .architecture-map { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 1.2em 0; }
-      .arch-node { min-height: 116px; padding: 14px; border: 1px solid var(--line); border-radius: 18px; background: #fffdf7; font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; font-weight: 700; }
-      .arch-node span { display: block; margin-top: 0.45em; color: var(--muted); font-size: 0.82rem; font-weight: 500; line-height: 1.55; }
+      .arch-figure { margin: 1.6em auto 1.2em; }
+      .arch-frame { display: block; overflow-x: auto; padding: clamp(10px, 2vw, 18px); border: 1px solid var(--line); border-radius: 24px; background: #fffdf7; box-shadow: 0 14px 34px rgba(37,51,44,0.12); }
+      .story .arch-frame img { display: block; width: min(100%, 980px); max-width: none; margin: 0 auto; border-radius: 16px; box-shadow: none; }
+      .paw-showcase { width: min(360px, 100%); margin: 1.8em auto; padding: 18px 18px 22px; border: 3px solid #b9703f; border-radius: 34px; background: linear-gradient(180deg, #fff8f2 0%, #f9ece6 100%); text-align: center; box-shadow: 0 16px 32px rgba(81,52,37,0.11); }
+      .paw-showcase h3 { margin: 1.6em 0 0.25em; color: #4f3327; font-family: Georgia, "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: 1.55rem; }
+      .paw-showcase p { margin: 0 0 1.4em; color: #7c695f; font-size: 0.92rem; }
+      .paw-back { display: inline-block; margin-bottom: 1.8em; padding: 0.75em 2.8em; border-radius: 999px; background: #fff; color: #6b422e; font-weight: 700; box-shadow: 0 8px 20px rgba(81,52,37,0.14); }
+      .story .paw-showcase img { width: 100%; border-radius: 180px 180px 18px 18px; box-shadow: none; }
       pre.mermaid { background: #fffdf7; border: 1px solid var(--line); border-radius: 14px; padding: 1em; overflow-x: auto; }
       @media (max-width: 760px) {
         .hero-icon { width: 92px; height: 92px; }
@@ -56,7 +61,7 @@
         .title-narrow { display: block !important; white-space: normal !important; }
         .store-card { grid-template-columns: 1fr; text-align: center; }
         .store-card img { margin: 0 auto; }
-        .architecture-map { grid-template-columns: 1fr; }
+        .story .arch-frame img { min-width: 620px; }
       }
     </style>
   </head>
@@ -92,14 +97,8 @@
           <blockquote>写真のように描かれた部屋で、3Dの猫が自分の意思で暮らし、さわると応えてくれる。雨の音と猫のゴロゴロを聞きながら眠れる、癒しのアプリ。</blockquote>
           <figure><img src="assets/1-relax.jpg" alt="ソファでくつろぐ猫" loading="lazy" /><figcaption>ソファでくつろぐ猫</figcaption></figure>
           <div class="table"><table><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>対応端末</td><td>iPhone（縦向き）</td></tr><tr><td>エンジン</td><td>Unity 6.6（6000.6.0f1）、Built-in レンダーパイプライン</td></tr><tr><td>画面</td><td>UI Toolkit（コードだけで組み立て）</td></tr><tr><td>猫のモデル</td><td>Somali Cat Animated ver 1.2（DreamNoms、CC BY 4.0）を glTFast で読み込み</td></tr><tr><td>猫の動き</td><td>モデル付属の5クリップ＋骨の補正と経路探索で、十数種類の行動を組み立て</td></tr><tr><td>料金</td><td>1.0は無料。App内課金も広告もなし</td></tr><tr><td>ビルド</td><td>Windowsで Xcode プロジェクトを書き出し、GitHub Actions の macOS で署名して App Store Connect へ</td></tr><tr><td>規模</td><td>C# 32ファイル・約5,700行（Editor向け支援コードを含む、コミット100件超）</td></tr></tbody></table></div>
-          <h2>アーキテクチャ構成</h2>
+          <h2 id="architecture">アーキテクチャ構成</h2>
           <p>大きく見ると、素材をUnityへ入れ、iPhone内で猫の行動・描画・音を動かし、公開時だけGitHub ActionsとApp Store Connectを使う構成です。1.0ではアカウント登録、広告、外部サーバー連携はありません。</p>
-          <div class="architecture-map">
-            <div class="arch-node">素材ソース<span>Sketchfabの猫モデル、CC0音源、部屋・家具・肉球などのオリジナル画像。</span></div>
-            <div class="arch-node">Unityアプリ<span>UI Toolkit、glTFast、Animator、経路探索、家具の前後レイヤー。</span></div>
-            <div class="arch-node">iPhone内保存<span>猫の名前、なつき度、音量、タイマーなどを端末内に保存。</span></div>
-            <div class="arch-node">公開経路<span>WindowsでXcodeを書き出し、GitHub ActionsのmacOSで署名してApp Storeへ。</span></div>
-          </div>
           <figure class="arch-figure">
             <a class="arch-frame" href="architecture-diagram.svg" target="_blank" rel="noopener">
               <img src="architecture-diagram.svg" alt="猫のいる音のアーキテクチャ構成図。素材ソースからUnityアプリ、iPhone内保存、GitHub ActionsとApp Store Connectまでの流れ。" loading="lazy" />
@@ -188,9 +187,15 @@
           <p>もう一つ時間がかかったのが、アイコンです。猫アプリは、アイコンの印象でかなり期待値が変わります。最初は手描き感のある猫、次に少しスタイリッシュな猫、さらにApp Storeで小さく表示しても分かる平らな線の猫へと、何度も方向を変えました。</p>
           <p>ここで難しかったのは、かわいければよいわけではないことです。アイコンは1024×1024ではよく見えても、ホーム画面では小さくなります。細いひげや淡い毛並みはつぶれやすく、背景とのコントラストが弱いと印象が残りません。そこで、アプリ内のやわらかい雰囲気を保ちつつ、App Store上でも一目で「猫のアプリ」と分かる形を探しました。</p>
           <p>審査の途中で一度提出を取り下げたのも、アイコンを差し替えるためです。中身の機能だけでなく、最初に目に入る顔を整えることも、公開前の大きな作業になりました。</p>
-          <h2>肉球とねこあし</h2>
+          <h2 id="paws">肉球とねこあし</h2>
           <p>猫アプリとして譲れなかったのが「肉球」です。画面いっぱいの白い前足を押すと、指がキュッと閉じます。むちむちの「ねこあし」は、画面の左右をさわると、そちら側の足がふみふみします。どちらもCodexが描いたオリジナルの絵で、ずれないよう複数の絵をぴったり重ねて切り替えています。</p>
-          <figure><img src="assets/5-paws.jpg" alt="肉球のアップ" loading="lazy" /><figcaption>肉球のアップ</figcaption></figure>
+          <figure class="paw-showcase">
+            <h3>ぷにぷに</h3>
+            <p>そっと押してみてね</p>
+            <span class="paw-back">もどる</span>
+            <img src="assets/paw-open.png" alt="肉球のアップ" loading="lazy" />
+            <figcaption>アプリ内の肉球画面も、このミルク色のやさしいトーンへ寄せています。</figcaption>
+          </figure>
           <h2>課金を、1.0では見送りました</h2>
           <p>当初は買い切りの「プラス」（610円）を用意し、夜の虫と暖炉の音、30分・60分のタイマー、肉球とねこあしの無制限を有料にする予定でした。実装も、価格の取得も、購入の復元も、ひととおり動く状態まで作りました。</p>
           <p>ところが提出の直前で、Appleの決まりに行き当たりました。<strong>そのアプリで初めての買い切り商品は、アプリのバージョンと一緒に審査へ出さなければならない</strong>のです。ところがAPIからも管理画面からも、課金をこの1.0の提出物に加えることができませんでした。</p>
