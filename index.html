@@ -9,14 +9,24 @@
     <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="favicon-16.png" sizes="16x16" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-    <link rel="stylesheet" href="styles.css?v=20261008-2" />
+    <link rel="stylesheet" href="styles.css?v=20261008-3" />
   </head>
   <body>
     <div class="shell">
       <header class="hero">
-        <p class="eyebrow">Neko No Oto Support</p>
-        <h1>猫のいる音</h1>
-        <p class="lead">猫と過ごす静かな時間を、安心して楽しんでいただくためのサポートページです。</p>
+        <div class="hero-text">
+          <img class="hero-icon" src="assets/app-icon.png" alt="" width="96" height="96" />
+          <p class="eyebrow">Neko No Oto Support</p>
+          <h1>猫のいる音</h1>
+          <p class="lead">猫と過ごす静かな時間を、安心して楽しんでいただくためのサポートページです。</p>
+          <p class="hero-actions">
+            <a class="store" href="https://apps.apple.com/jp/app/id6818069970">App Storeで見る</a>
+            <a class="ghost" href="#faq">よくある質問</a>
+          </p>
+        </div>
+        <div class="hero-phone" aria-hidden="true">
+          <div class="phone"><img src="assets/4-sleep.jpg" alt="" loading="lazy" /></div>
+        </div>
       </header>
 
       <main>
@@ -26,7 +36,7 @@
           <p><a class="store" href="https://apps.apple.com/jp/app/id6818069970">App Storeで見る</a></p>
         </section>
 
-        <section class="card">
+        <section class="card" id="faq">
           <h2>音が聞こえないとき</h2>
           <ul>
             <li>iPhone本体とアプリ内の音量を確認してください。</li>

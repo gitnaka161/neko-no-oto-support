@@ -192,3 +192,89 @@ footer {
   font-size: 0.85rem;
   text-align: center;
 }
+
+/* The header carries the icon, the name and a phone showing the app, so a first-time visitor can see
+   what this is before reading a word. Two columns on a desktop; stacked, phone last, on a narrow one. */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 4vw, 56px);
+}
+
+.hero-text {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.hero-icon {
+  width: clamp(64px, 11vw, 96px);
+  height: auto;
+  margin-bottom: 18px;
+  border-radius: 22%;
+  box-shadow: 0 10px 24px rgba(70, 67, 52, 0.18);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 26px 0 0;
+}
+
+.ghost {
+  display: inline-block;
+  padding: 0.7em 1.4em;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  color: var(--ink);
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.ghost:hover,
+.ghost:focus-visible {
+  background: #ffffff;
+}
+
+.hero-phone {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  width: clamp(150px, 26vw, 232px);
+}
+
+/* A phone drawn in CSS rather than shipped as a picture frame: it stays sharp at any size, and the
+   screenshot inside it can be swapped by changing one img. */
+.phone {
+  overflow: hidden;
+  padding: 7px;
+  border: 3px solid #25332c;
+  border-radius: 34px;
+  background: #25332c;
+  box-shadow: 0 22px 46px rgba(37, 51, 44, 0.26);
+  transform: rotate(3deg);
+}
+
+.phone img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+}
+
+@media (max-width: 720px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-phone {
+    width: min(210px, 56%);
+    align-self: center;
+    margin-top: 10px;
+  }
+}
