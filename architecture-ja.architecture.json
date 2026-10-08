@@ -1,0 +1,231 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "猫のいる音 アーキテクチャ構成",
+    "output": "architecture-ja.html",
+    "quality_profile": "showcase",
+    "viewBox": [1120, 760],
+    "views": [
+      {
+        "id": "runtime",
+        "label": "iPhone内の体験",
+        "focus": ["user", "app", "behavior", "cat3d", "room", "audio", "localSave"],
+        "note": "猫の行動、部屋の絵、音と振動は端末内で完結します。"
+      },
+      {
+        "id": "assets",
+        "label": "素材とUnity",
+        "focus": ["assets", "unityEditor", "app", "cat3d", "room", "audio"],
+        "note": "無料モデル、CC0音源、オリジナルの絵をUnityへ組み込みます。"
+      },
+      {
+        "id": "release",
+        "label": "公開まで",
+        "focus": ["unityEditor", "github", "appStore"],
+        "note": "Windowsで書き出し、GitHub ActionsのmacOSで署名して配布します。"
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "assets",
+      "type": "external",
+      "label": "素材ソース",
+      "sublabel": "Sketchfab / CC0音源 / 自作絵",
+      "pos": [105, 82],
+      "size": [180, 70]
+    },
+    {
+      "id": "user",
+      "type": "external",
+      "label": "ユーザー",
+      "sublabel": "iPhoneで触る・聴く",
+      "pos": [55, 330],
+      "size": [135, 66]
+    },
+    {
+      "id": "app",
+      "type": "frontend",
+      "label": "猫のいる音",
+      "sublabel": "Unity 6.6 / UI Toolkit",
+      "pos": [270, 330],
+      "size": [165, 70],
+      "tag": "iOS App"
+    },
+    {
+      "id": "behavior",
+      "type": "backend",
+      "label": "行動・経路制御",
+      "sublabel": "可視グラフ / Dijkstra",
+      "pos": [525, 180],
+      "size": [175, 70]
+    },
+    {
+      "id": "cat3d",
+      "type": "backend",
+      "label": "3D猫ランタイム",
+      "sublabel": "glTFast / Animator / 骨補正",
+      "pos": [525, 330],
+      "size": [175, 70]
+    },
+    {
+      "id": "room",
+      "type": "frontend",
+      "label": "絵の部屋レイヤー",
+      "sublabel": "背景 / 家具の前後2枚",
+      "pos": [525, 500],
+      "size": [175, 70]
+    },
+    {
+      "id": "audio",
+      "type": "backend",
+      "label": "音・振動",
+      "sublabel": "猫音 / 環境音 / Haptics",
+      "pos": [790, 255],
+      "size": [170, 70]
+    },
+    {
+      "id": "localSave",
+      "type": "database",
+      "label": "端末内保存",
+      "sublabel": "名前・設定・状態",
+      "pos": [270, 485],
+      "size": [170, 70]
+    },
+    {
+      "id": "unityEditor",
+      "type": "backend",
+      "label": "Windows Unity",
+      "sublabel": "開発 / Xcode書き出し",
+      "pos": [105, 650],
+      "size": [180, 70]
+    },
+    {
+      "id": "github",
+      "type": "cloud",
+      "label": "GitHub Actions",
+      "sublabel": "macOS署名 / ASC API",
+      "pos": [420, 650],
+      "size": [180, 70]
+    },
+    {
+      "id": "appStore",
+      "type": "cloud",
+      "label": "App Store",
+      "sublabel": "審査 / 配布",
+      "pos": [735, 650],
+      "size": [165, 70]
+    }
+  ],
+  "connections": [
+    {
+      "id": "assets-to-editor",
+      "from": "assets",
+      "to": "unityEditor",
+      "label": "モデル・音・絵を組み込み",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "left",
+      "via": [[195, 170], [25, 170], [25, 685]],
+      "labelAt": [98, 170]
+    },
+    {
+      "id": "user-to-app",
+      "from": "user",
+      "to": "app",
+      "label": "タップ / 視聴",
+      "variant": "emphasis"
+    },
+    {
+      "id": "app-to-behavior",
+      "from": "app",
+      "to": "behavior",
+      "label": "行動を決める",
+      "fromSide": "top",
+      "toSide": "left",
+      "via": [[352.5, 286], [495, 286], [495, 215]],
+      "labelAt": [422, 271]
+    },
+    {
+      "id": "behavior-to-cat",
+      "from": "behavior",
+      "to": "cat3d",
+      "label": "移動・姿勢",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelAt": [612, 290]
+    },
+    {
+      "id": "room-to-cat",
+      "from": "room",
+      "to": "cat3d",
+      "label": "床座標と前後関係",
+      "fromSide": "top",
+      "toSide": "bottom",
+      "labelAt": [612, 455]
+    },
+    {
+      "id": "cat-to-audio",
+      "from": "cat3d",
+      "to": "audio",
+      "label": "猫音を鳴らす",
+      "fromSide": "right",
+      "toSide": "left",
+      "via": [[740, 365], [740, 290]],
+      "labelAt": [744, 326]
+    },
+    {
+      "id": "app-to-save",
+      "from": "app",
+      "to": "localSave",
+      "label": "設定を保存",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelAt": [355, 445]
+    },
+    {
+      "id": "editor-to-github",
+      "from": "unityEditor",
+      "to": "github",
+      "label": "Xcode project archive",
+      "variant": "emphasis",
+      "labelAt": [352, 733]
+    },
+    {
+      "id": "github-to-store",
+      "from": "github",
+      "to": "appStore",
+      "label": "署名・アップロード",
+      "variant": "emphasis",
+      "labelAt": [657, 733]
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "アプリ内",
+      "items": [
+        "猫の行動、描画、音、振動はiPhone内で動きます",
+        "登録・広告・外部サーバー連携は1.0ではありません"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Unityで苦労した部分",
+      "items": [
+        "絵の部屋と3D座標を合わせること",
+        "少ないアニメーションから自然な猫の行動を作ること"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "公開経路",
+      "items": [
+        "WindowsのUnityでXcodeプロジェクトを書き出します",
+        "GitHub ActionsのmacOSで署名し、App Store Connectへ送ります"
+      ]
+    }
+  ]
+}

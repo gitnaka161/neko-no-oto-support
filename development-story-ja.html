@@ -26,15 +26,54 @@
       .story th { background: var(--sage-soft); }
       .updated { color: var(--muted); font-size: 0.9rem; }
       .hero-icon { width: 116px; height: 116px; border-radius: 25%; box-shadow: 0 16px 34px rgba(37,51,44,0.22); margin-bottom: 1.2rem; }
+      .story-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 280px); align-items: center; gap: clamp(24px, 5vw, 56px); border-radius: 34px; background: linear-gradient(135deg, rgba(255,253,247,0.98), rgba(244,238,222,0.92)); }
+      .story-hero::after { display: none; }
+      .hero-copy { position: relative; z-index: 1; min-width: 0; }
+      .hero-brand { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; }
+      .hero-brand img { width: 58px; height: 58px; margin: 0; border-radius: 16px; box-shadow: 0 12px 24px rgba(37,51,44,0.16); }
+      .hero-brand strong { display: block; font-size: 1rem; }
+      .hero-brand span { display: block; color: #a9793d; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; }
+      .story-hero h1 { font-size: clamp(2.45rem, 7vw, 4.7rem); }
+      .story-hero h1, .story-hero .lead { overflow-wrap: anywhere; }
+      .hero-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 22px; color: var(--muted); font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; font-size: 0.82rem; }
+      .phone-shot { position: relative; justify-self: center; width: min(100%, 268px); aspect-ratio: 9 / 19.5; padding: 12px; border-radius: 44px; background: #2f2b25; box-shadow: 0 24px 58px rgba(37,51,44,0.26); transform: rotate(3deg); }
+      .phone-shot::before { position: absolute; top: 18px; left: 50%; width: 72px; height: 5px; border-radius: 999px; background: rgba(255,255,255,0.16); content: ""; transform: translateX(-50%); z-index: 2; }
+      .phone-shot img { width: 100%; height: 100%; display: block; object-fit: cover; border-radius: 32px; }
+      .store-card { display: grid; grid-template-columns: 118px minmax(0, 1fr); align-items: center; gap: 18px; margin: 1.4em 0; padding: 16px; border: 1px solid var(--line); border-radius: 22px; background: #fffdf7; }
+      .store-card img { width: 118px; height: 118px; border-radius: 16px; box-shadow: 0 10px 24px rgba(37,51,44,0.12); }
+      .store-card strong { display: block; margin-bottom: 0.2em; font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; }
+      .store-card p { margin: 0.25em 0 0.7em; }
+      .architecture-map { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 1.2em 0; }
+      .arch-node { min-height: 116px; padding: 14px; border: 1px solid var(--line); border-radius: 18px; background: #fffdf7; font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; font-weight: 700; }
+      .arch-node span { display: block; margin-top: 0.45em; color: var(--muted); font-size: 0.82rem; font-weight: 500; line-height: 1.55; }
       pre.mermaid { background: #fffdf7; border: 1px solid var(--line); border-radius: 14px; padding: 1em; overflow-x: auto; }
+      @media (max-width: 760px) {
+        .story-hero { grid-template-columns: 1fr; }
+        .phone-shot { width: min(78vw, 250px); transform: rotate(1.5deg); }
+        .store-card { grid-template-columns: 1fr; text-align: center; }
+        .store-card img { margin: 0 auto; }
+        .architecture-map { grid-template-columns: 1fr; }
+      }
     </style>
   </head>
   <body>
     <div class="shell">
-      <header class="hero">
-        <img class="hero-icon" src="assets/app-icon.png" alt="猫のいる音のアプリアイコン" />
-        <p class="eyebrow">Development Story</p>
-        <h1>AIとUnityで「猫のいる音」をつくる</h1>
+      <header class="hero story-hero">
+        <div class="hero-copy">
+          <div class="hero-brand">
+            <img class="hero-icon" src="assets/app-icon.png" alt="猫のいる音のアプリアイコン" />
+            <div>
+              <strong>猫のいる音</strong>
+              <span>DEVELOPMENT STORY</span>
+            </div>
+          </div>
+          <h1>AIとUnityで<br />「猫のいる音」<br />をつくる</h1>
+          <p class="lead">動画生成で作ろうとしていた構想が、<br />写真の部屋を3Dの猫が歩き回る<br />アプリになるまで。</p>
+          <p class="hero-meta"><span>2026年10月8日</span><span>v1.0 App Store公開</span></p>
+        </div>
+        <div class="phone-shot" aria-label="猫のいる音のアプリ画面">
+          <img src="assets/4-sleep.jpg" alt="布団の上で丸まって眠る猫のアプリ画面" />
+        </div>
       </header>
       <main>
         <article class="story">
@@ -43,11 +82,28 @@
           <p><code>猫のいる音</code>は、そんな「猫のいる時間」をiPhoneの中につくるアプリです。この記事では、動画生成で作ろうとしていた最初の構想が、写真の部屋の中を3Dの猫が歩き回るUnityアプリになるまでを、判断の理由と失敗も含めて記録します。</p>
           <p>2026年10月8日、バージョン1.0がApp Storeで公開されました。この記事は、最初の構想から公開までに何を選び、どこでつまずき、どう直したかの記録です。</p>
           <p>以前作った瞑想BGMアプリは、音を選んで静かに聴くことが中心でした。今回の大きな違いは、そこに <strong>Unityで動く3Dの猫</strong> を入れたことです。音だけで癒すのではなく、部屋の中で猫が歩き、ごはんを食べ、タップに反応する。つまり、BGMアプリというより「小さな猫のいる生活」をiPhoneの中に作る試みになりました。</p>
+          <div class="store-card">
+            <img src="assets/app-store-qr.png" alt="App Storeで猫のいる音を開くQRコード" />
+            <div>
+              <strong>iPhoneで試す</strong>
+              <p>パソコンでこの記事を読んでいる場合は、QRコードをiPhoneで読み取るとApp Storeを開けます。</p>
+              <a class="store" href="https://apps.apple.com/jp/app/id6818069970">App Storeで開く</a>
+            </div>
+          </div>
           <h2>前提: 今回作ったもの</h2>
           <p>一言で表すと、次のようなアプリです。</p>
           <blockquote>写真のように描かれた部屋で、3Dの猫が自分の意思で暮らし、さわると応えてくれる。雨の音と猫のゴロゴロを聞きながら眠れる、癒しのアプリ。</blockquote>
           <figure><img src="assets/1-relax.jpg" alt="ソファでくつろぐ猫" loading="lazy" /><figcaption>ソファでくつろぐ猫</figcaption></figure>
           <div class="table"><table><thead><tr><th>項目</th><th>内容</th></tr></thead><tbody><tr><td>対応端末</td><td>iPhone（縦向き）</td></tr><tr><td>エンジン</td><td>Unity 6.6（6000.6.0f1）、Built-in レンダーパイプライン</td></tr><tr><td>画面</td><td>UI Toolkit（コードだけで組み立て）</td></tr><tr><td>猫のモデル</td><td>Somali Cat Animated ver 1.2（DreamNoms、CC BY 4.0）を glTFast で読み込み</td></tr><tr><td>猫の動き</td><td>モデル付属の5クリップ＋骨の補正と経路探索で、十数種類の行動を組み立て</td></tr><tr><td>料金</td><td>1.0は無料。App内課金も広告もなし</td></tr><tr><td>ビルド</td><td>Windowsで Xcode プロジェクトを書き出し、GitHub Actions の macOS で署名して App Store Connect へ</td></tr><tr><td>規模</td><td>C# 32ファイル・約5,700行（Editor向け支援コードを含む、コミット100件超）</td></tr></tbody></table></div>
+          <h2>アーキテクチャ構成</h2>
+          <p>大きく見ると、素材をUnityへ入れ、iPhone内で猫の行動・描画・音を動かし、公開時だけGitHub ActionsとApp Store Connectを使う構成です。1.0ではアカウント登録、広告、外部サーバー連携はありません。</p>
+          <div class="architecture-map">
+            <div class="arch-node">素材ソース<span>Sketchfabの猫モデル、CC0音源、部屋・家具・肉球などのオリジナル画像。</span></div>
+            <div class="arch-node">Unityアプリ<span>UI Toolkit、glTFast、Animator、経路探索、家具の前後レイヤー。</span></div>
+            <div class="arch-node">iPhone内保存<span>猫の名前、なつき度、音量、タイマーなどを端末内に保存。</span></div>
+            <div class="arch-node">公開経路<span>WindowsでXcodeを書き出し、GitHub ActionsのmacOSで署名してApp Storeへ。</span></div>
+          </div>
+          <p><a class="store" href="architecture-ja.html">詳しい構成図を開く</a></p>
           <h2>このアプリの中心は、本物の3Dの猫です</h2>
           <p>先に、このアプリでいちばん手のかかった部分を書いておきます。<strong>画面の中の猫は、録画した映像でも、パラパラ漫画の絵でもありません。</strong>iPhoneの中で毎秒何十回も計算されて動いている、3Dのキャラクターです。今回の開発でいちばん時間を使ったのは、音楽アプリのように再生ボタンを置くことではなく、この猫を「部屋にいる生き物」に見せることでした。</p>
           <p>この違いは、見ているとすぐに分かります。</p>
