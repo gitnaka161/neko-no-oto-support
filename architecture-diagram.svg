@@ -118,8 +118,8 @@ svg[data-preset="blueprint"] .c-grid {
         <path data-edge-from="github" data-edge-to="appStore" data-edge-label="署名・アップロード" data-edge-key="8" data-edge-id="github-to-store" data-composition-points="600,685;735,685" d="M 600 685 L 735 685" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
 
         <!-- Components -->
-        <g id="node-assets" data-node-id="assets" data-node-label="素材ソース" tabindex="0" role="button" aria-label="Focus 素材ソース, Sketchfab / CC0音源 / 自作絵, Architecture component" aria-pressed="false" data-node-kind="external" data-node-sublabel="Sketchfab / CC0音源 / 自作絵" data-node-context="Architecture component">
-          <title>素材ソース · Sketchfab / CC0音源 / 自作絵 · Architecture component</title>
+        <g id="node-assets" data-node-id="assets" data-node-label="素材ソース" tabindex="0" role="button" aria-label="Focus 素材ソース, CC0音源 / 自作録音・絵, Architecture component" aria-pressed="false" data-node-kind="external" data-node-sublabel="CC0音源 / 自作録音・絵" data-node-context="Architecture component">
+          <title>素材ソース · CC0音源 / 自作録音・絵 · Architecture component</title>
           <rect x="105" y="82" width="180" height="70" rx="6" class="c-mask"/>
           <rect x="105" y="82" width="180" height="70" rx="6" class="c-external" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(111 88) scale(0.6875)">
@@ -127,7 +127,7 @@ svg[data-preset="blueprint"] .c-grid {
             <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
           </g>
           <text data-node-label="" data-detail-anchor="" x="195" y="115" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">素材ソース</text>
-        <text data-detail="context" x="195" y="131" class="t-muted" font-size="9" text-anchor="middle">Sketchfab / CC0音源 / 自作絵</text>
+        <text data-detail="context" x="195" y="131" class="t-muted" font-size="9" text-anchor="middle">CC0音源 / 自作録音・絵</text>
         </g>
 
         <g id="node-user" data-node-id="user" data-node-label="ユーザー" tabindex="0" role="button" aria-label="Focus ユーザー, iPhoneで触る・聴く, Architecture component" aria-pressed="false" data-node-kind="external" data-node-sublabel="iPhoneで触る・聴く" data-node-context="Architecture component">

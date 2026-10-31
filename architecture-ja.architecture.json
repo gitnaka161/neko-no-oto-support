@@ -17,7 +17,7 @@
         "id": "assets",
         "label": "素材とUnity",
         "focus": ["assets", "unityEditor", "app", "cat3d", "room", "audio"],
-        "note": "無料モデル、CC0音源、オリジナルの絵をUnityへ組み込みます。"
+        "note": "無料モデル、CC0音源、自分の猫の録音、オリジナルの絵をUnityへ組み込みます。"
       },
       {
         "id": "release",
@@ -32,7 +32,7 @@
       "id": "assets",
       "type": "external",
       "label": "素材ソース",
-      "sublabel": "Sketchfab / CC0音源 / 自作絵",
+      "sublabel": "Sketchfab / CC0音源 / 自作録音・自作絵",
       "pos": [105, 82],
       "size": [180, 70]
     },
@@ -208,7 +208,7 @@
       "title": "アプリ内",
       "items": [
         "猫の行動、描画、音、振動はiPhone内で動きます",
-        "登録・広告・外部サーバー連携は1.0ではありません"
+        "登録・広告・外部サーバー連携はありません"
       ]
     },
     {
